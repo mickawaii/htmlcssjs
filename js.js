@@ -12,7 +12,7 @@ window.onload = function() {
   document.getElementById("divMaroto").style.top = '0px';
 }
 
-function facAConta() {
+function fazAConta() {
   switch (operacaoArmazenadaParaContasPosteriores) {
     case '+':
       valorArmazenadoParaContasPosteriores += parseFloat(displayElementNumero.value);
@@ -30,20 +30,7 @@ function facAConta() {
 }
 
 function calcula() {
-  switch (operacaoArmazenadaParaContasPosteriores) {
-    case '+':
-      valorArmazenadoParaContasPosteriores += parseFloat(displayElementNumero.value);
-      break;
-    case '-':
-      valorArmazenadoParaContasPosteriores -= parseFloat(displayElementNumero.value);
-      break;
-    case '*':
-      valorArmazenadoParaContasPosteriores *= parseFloat(displayElementNumero.value);
-      break;
-    case '/':
-      valorArmazenadoParaContasPosteriores /= parseFloat(displayElementNumero.value);
-      break;
-  }
+  fazAConta();
   displayElementNumero.value = valorArmazenadoParaContasPosteriores;
   displayElementOperacao.value = '';
   limpaDisplay = true;
@@ -57,20 +44,7 @@ function operacao(operacaoMatematica) {
     operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
     displayElementOperacao.value = operacaoMatematica;
   } else {
-    switch (operacaoArmazenadaParaContasPosteriores) {
-      case '+':
-        valorArmazenadoParaContasPosteriores += parseFloat(displayElementNumero.value);
-        break;
-      case '-':
-        valorArmazenadoParaContasPosteriores -= parseFloat(displayElementNumero.value);
-        break;
-      case '*':
-        valorArmazenadoParaContasPosteriores *= parseFloat(displayElementNumero.value);
-        break;
-      case '/':
-        valorArmazenadoParaContasPosteriores /= parseFloat(displayElementNumero.value);
-        break;
-  }
+    fazAConta();
     operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
     displayElementNumero.value = valorArmazenadoParaContasPosteriores;
     displayElementOperacao.value = operacaoMatematica;
