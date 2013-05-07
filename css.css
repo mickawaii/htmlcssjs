@@ -1,0 +1,201 @@
+body
+{
+  font-family: "Helvetica";
+  color: #686868;
+  text-align: center;
+  margin: 10px;
+}
+
+h1
+{
+  font-size: 50px;
+  font-family: "Times";
+  font-weight: normal;
+}
+
+h2
+{
+  font-size: 30px;
+  font-weight: normal;
+  font-family: "Times New Roman";
+}
+
+h3
+{
+  font-size: 25px;
+  font-weight: normal;
+  font-family: "Times New Roman";
+}
+
+#wrapper
+{
+  width: 900px;
+  position: relative;
+  background-color: #BABACA;
+  border: 10px solid #F8F8F8;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#header
+{
+  height: 120px;
+  background-color: #F0F0F0;
+  font-size: 40px;
+  color: #686868;
+  padding: 10px;
+}
+
+#menuh
+{
+  width: 900px;
+  height: 30px;
+}
+
+#menuh li
+{
+  display: inline;
+}
+
+#menuh a 
+{
+  color: black;
+  text-decoration: none;
+  margin: 0 15px 0 15px;
+}
+
+#menuh a:hover, a:active
+{
+  color: #FFFF99;
+}
+
+#menuv
+{
+  width: 230px;
+  height: 900px;
+  float: left;
+  background-color: #383838;
+  color: #FFFF99;
+}
+
+#menuv ul
+{
+  list-style-type: none;
+  padding: 0;
+}
+
+#menuv li
+{
+  padding: 5px 0 5px 0;
+  text-indent: 0;
+}
+
+#menuv a, a:visited
+{
+  color: #888888;
+  text-decoration: none;
+  border-bottom: 1px solid #505050;
+  border-left: 7px solid #505050;
+  text-indent: 0;
+  height: 25px;
+  width: 80%;
+  padding-top: 10px;
+  margin-left: 17px;
+  display: block;
+}
+
+#menuv a:hover, a:active
+{
+  color: #F0F0F0;
+  font-weight: normal;
+  border-bottom: 1px solid #FFFF99;
+  border-left: 7px solid #FFFF99;
+}
+
+#conteudo
+{
+  width: 630px;
+  height: 800px;
+  float: right;
+  text-align: justify;
+  padding: 20px;
+  background-color: #F0F0F0;
+}
+
+#footer
+{
+  width: 900px;
+  height: 30px;
+  clear: both;
+  background-color: #FFFF99;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 10px;
+  text-align: center;
+  padding: 13px 0 0 0;
+}
+
+.center
+{
+  text-align: center;
+}
+
+button
+{
+  color: #505050;
+  font-size: 15px;
+  text-align: center;
+}
+
+.calcula
+{ 
+  width: 40px;
+  height: 84px;
+}
+
+.but
+{
+  width: 40px;
+  height: 40px;
+}
+
+.limpa
+{
+  width: 172px;
+  height: 40px;
+}
+
+#displayNumero
+{
+  height: 25px;
+  width: 128px;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 20px;
+  text-align: right;
+}
+
+#displayOperacao
+{
+  height: 25px;
+  width: 35px;
+  margin-bottom: 6px;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+}
+
+#displayNumero:disabled, #displayOperacao:disabled
+{
+  border: 1px solid gray;
+}
+
+#divMaroto
+{
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  position: relative;
+  text-align: center;
+}
+

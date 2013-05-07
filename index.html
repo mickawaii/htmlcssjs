@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>Pagina Teste</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
+  <script type="text/javascript" src="js.js"></script>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1>Titulo aqui</h1>
+    </div>
+
+    <div id="menuh">
+      <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
+        <li><a href="#">Link 5</a></li>
+      </ul>
+    </div>
+
+    <div id="menuv">
+      <h3>Menu 1</h3>
+      <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
+        <li><a href="#">Link 5</a></li>
+      </ul>
+    </div>
+
+    <div id="conteudo">
+      <h2>Conteudo aqui</h2>
+      <p>
+        Joining lines
+        I've probably wasted more hours of my life than I care to admit deleting
+      </p>
+          
+      <form>
+        <table>
+          <tr>
+            <td>
+              <input disabled="true" type="text" id="displayOperacao" value=''>
+            </td>
+
+            <td colspan="3">
+              <input disabled="true" type="text" id="displayNumero" value='0'>
+            </td>
+          </tr>
+
+          <tr>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(7)">7</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(8)">8</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(9)">9</button></td>
+            <td><button class="but" type="button" onclick="operacao('+')">+</button></td>
+          </tr>
+
+          <tr>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(4)">4</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(5)">5</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(6)">6</button></td>
+            <td><button class="but" type="button" onclick="operacao('-')">-</button></td>
+          </tr>
+
+          <tr>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(1)">1</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(2)">2</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(3)">3</button></td>
+            <td><button class="but" type="button" onclick="operacao('*')">*</button></td>
+          </tr>
+
+          <tr>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay(0)">0</button></td>
+            <td><button class="but" type="button" onclick="inserirValorNoDisplay('.')">.</button></td>
+            <td><button class="but" type="button" onclick="operacao('/')">/</button></td>
+            <td><button class="but" type="button" onclick="calcula()">=</button></td>
+          </tr>
+
+          <tr>
+            <td colspan="4"><button class="limpa" type="button" onclick="limpaVisor()">Limpar</button></td>
+          </tr>
+        </table>
+      </form>
+
+      <div onmouseover="mouseEmcimaDoDiv(this)" id="divMaroto">
+        Passe o mouse aqui!
+      </div>
+
+    </div>
+
+    <div id="footer">
+      Todos os direitos reservados &#169; Pagina Teste
+    </div>
+  </div>
+</body>
+
+</html>
