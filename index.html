@@ -3,14 +3,16 @@
   <title>Pagina Teste</title>
   <link rel="stylesheet" type="text/css" href="css.css">
   <script type="text/javascript" src="js.js"></script>
+  <script src="jquery-1.9.1.js"></script>
+  <script src="meujquery.js"></script>
 </head>
 <body>
   <div id="wrapper">
     <div id="header">
-      <h1>Titulo aqui</h1>
+      <h1><a href="index.html" alt="home">Titulo aqui</a></h1>
     </div>
 
-    <div id="menuh">
+    <div id="menuHorizontal">
       <ul>
         <li><a href="#">Link 1</a></li>
         <li><a href="#">Link 2</a></li>
@@ -20,7 +22,7 @@
       </ul>
     </div>
 
-    <div id="menuv">
+    <div id="menuVertical">
       <h3>Menu 1</h3>
       <ul>
         <li><a href="#">Link 1</a></li>
@@ -32,11 +34,12 @@
     </div>
 
     <div id="conteudo">
-      <h2>Conteudo aqui</h2>
+      <h2 id="apagar">Conteudo aqui</h2>
       <p>
         Joining lines
         I've probably wasted more hours of my life than I care to admit deleting
       </p>
+      <p>clique em mim pra apagar</p>
           
       <form>
         <table>
@@ -82,10 +85,12 @@
             <td colspan="4"><button class="limpa" type="button" onclick="limpaVisor()">Limpar</button></td>
           </tr>
         </table>
+        <br>
+        <button id="botaoApagar">Botao apagar</button>
       </form>
+      <button id="mouseAqui">OK</button>
 
-      <div onmouseover="mouseEmcimaDoDiv(this)" id="divMaroto">
-        Passe o mouse aqui!
+      <div id="div2">
       </div>
 
     </div>

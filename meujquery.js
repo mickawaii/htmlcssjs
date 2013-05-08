@@ -1,3 +1,17 @@
+
+// $(document).ready(function(){
+//   $("#botaoApagar").click(function(){
+//     $("#apagar").toggle("");
+//     return false;
+//   });
+
+//   $(".but").click(function() {
+//     console.log($(this).val());
+//     $("displayNumero").val($(this).val());
+//   });
+// });
+
+
 var operacaoArmazenadaParaContasPosteriores = '';
 var valorArmazenadoParaContasPosteriores = 0;
 var resultadoArmazenado = 0;
