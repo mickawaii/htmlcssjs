@@ -1,0 +1,68 @@
+<!-- esquerda 37
+cima 38
+direita 39
+baixo 40 -->
+
+<html>
+<head>
+  <title>Snake</title>
+  <style type="text/css">
+    .div_snake {
+      background: lightblue;
+      display: block;
+      height: 20px;
+      width: 20px;
+      position: relative;
+    }
+
+    .div_snake_other {
+      background: lightblue;
+      display: block;
+      height: 20px;
+      width: 20px;
+      position: relative;
+    }
+
+  </style>
+  <script src="jquery-1.9.1.js"></script>
+  <script>
+    $(document).ready(function(){
+      elem_div_snake = $(".js_div_snake");
+      elem_div_snake.css({
+        left: "500px",
+        top: "250px"
+      });
+
+      $(window).keydown(function(event) {
+        if (event.which == 37) {
+          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+          elem_div_snake.css({
+            left: "-=20px"
+          });
+        }
+        if (event.which == 38) {
+          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+          elem_div_snake.css({
+            top: "-=20px"
+          });
+        }
+        if (event.which == 39) {
+          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+          elem_div_snake.css({
+            left: "+=20px"
+          });
+        }
+        if (event.which == 40) {
+          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+          elem_div_snake.css({
+            top: "+=20px"
+          });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="div_snake js_div_snake"></div>
+</body>
+</html>

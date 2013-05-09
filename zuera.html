@@ -57,13 +57,22 @@
 
       botao_suicidio_element.click(function(){
         if(opcao_menu.val() == "opcao_pessoa_normal"){
-          $(".div_pessoa").last().remove();
+          $(".div_cada_amigo").each(function(index){
+            setTimeout(function(){
+              $(".div_pessoa").last().remove();
+            }, 400*index);
+          });
         } else if(opcao_menu.val() == "opcao_coreano"){
-          for(var i = 0; i < $(".div_cada_amigo").length; i++){
+          $(".div_cada_amigo").each(function(index){
             setTimeout(function(){
               $(".div_cada_amigo").last().remove();
-            }, 800);
-          }s
+            }, 400*index);
+          });
+          $(".div_pessoa").each(function(index){
+            setTimeout(function(){
+              $(".div_pessoa").last().remove();
+            }, 400*$(".div_cada_amigo").length + 400*index);
+          });
         }
       });
     });
