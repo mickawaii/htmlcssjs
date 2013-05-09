@@ -1,0 +1,90 @@
+<html>
+<head>
+  <title>Botao Coreano</title>
+  <style type="text/css">
+    body
+    {
+      color: teal;
+      font-family: "Helvetica";
+      font-size: 15px;
+    }
+
+    .div_amigos {
+      background: #fffffe;
+      display: block;
+      clear: left;
+    }
+
+    .div_cada_amigo {
+      margin: 10px;
+      width: 50px;
+      height: 50px;
+      background: lightblue;
+      display: block;
+      float: left;
+    }
+
+    .div_pessoa {
+      margin: 10px;
+      width: 50px;
+      height: 50px;
+      background: pink;
+      display: block;
+      float: left;
+    }
+
+  </style>
+  <script src="jquery-1.9.1.js"></script>
+  <script>
+    $(document).ready(function(){
+      var suicidio = null;
+      opcao_menu = $("select");
+      botao_nascer_element = $(".botao_nascer");
+      botao_amigos_element = $(".botao_chamar_amigos");
+      botao_suicidio_element = $(".botao_suicidio");
+
+      botao_amigos_element.click(function(){
+        $(".div_amigos").append("<div class='div_cada_amigo js_div_cada_amigo'></div>");
+      });
+
+      botao_nascer_element.click(function(){
+        if(opcao_menu.val() == "opcao_pessoa_normal"){
+          $(".div_amigos").append("<div class='div_pessoa'>N</div>"); 
+        } else if(opcao_menu.val() == "opcao_coreano"){
+          $(".div_amigos").append("<div class='div_pessoa'>C</div>");
+        }
+      });
+
+      botao_suicidio_element.click(function(){
+        if(opcao_menu.val() == "opcao_pessoa_normal"){
+          suicidio = setInterval(function(){
+            $(".div_pessoa").last().remove();
+          }, 1000);
+        } else if(opcao_menu.val() == "opcao_coreano"){
+          setInterval(function(){
+            $(".div_cada_amigo").last().remove();
+          }, 1000);
+          $(".div_pessoa").remove();
+          // if($(".div_amigos").has(".div_cada_amigo")) {
+          //   $(".div_pessoa").remove();
+          // }  
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <p>Quem voce eh?</p>
+  <select>
+    <option value="opcao_pessoa_normal">pessoa normal</option>
+    <option value="opcao_coreano">coreano</option>
+  </select>
+  <br>
+  <p>Escolha as opcoes</p>
+  <button class="botao_nascer js_botao_nascer">Nascer</button>
+  <button class="botao_chamar_amigos js_botao_chamar_amigos">Chamar amigos</button>
+  <button class="botao_suicidio ja_botao_suicidio">Cansei de estudar, vou me matar</button>
+  <br>
+  <div class="div_amigos js_div_amigos"></div>
+</body>
+</html>

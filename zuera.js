@@ -19,18 +19,3 @@ $(document).ready(function(){
     }
   });
 });
-
-// function mouseEmcimaDoDiv(obj) {
-//   if (obj.style.left == '0px' && obj.style.top == '0px') {
-//     obj.style.left = '150px';
-//   }
-//   else if (obj.style.left == '150px' && obj.style.top == '0px'){
-//     obj.style.top = '150px';
-//   }
-//   else if (obj.style.left == '150px' && obj.style.top == '150px'){
-//     obj.style.left = '0px';
-//   }
-//   else if (obj.style.top == '150px' && obj.style.left == '0px'){
-//     obj.style.top = '0px';
-//   }
-// }

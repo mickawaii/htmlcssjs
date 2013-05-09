@@ -197,11 +197,12 @@ button
   border: 1px solid gray;
 }
 
-#div2
+.div_maroto
 {
   width: 100px;
   height: 100px;
   background: lightblue;
+  position: relative;
   text-align: center;
 }
 
