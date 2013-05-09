@@ -57,20 +57,13 @@
 
       botao_suicidio_element.click(function(){
         if(opcao_menu.val() == "opcao_pessoa_normal"){
-          suicidio = setInterval(function(){
-            $(".div_pessoa").last().remove();
-          }, 1000);
+          $(".div_pessoa").last().remove();
         } else if(opcao_menu.val() == "opcao_coreano"){
-
-          loadStuff(someURL, someID, function() { showStuff('foo'); });
-        });
-          setInterval(function(){
-            $(".div_cada_amigo").last().remove();
-          }, 1000);
-          $(".div_pessoa").remove();
-          // if($(".div_amigos").has(".div_cada_amigo")) {
-          //   $(".div_pessoa").remove();
-          // }  
+          for(var i = 0; i < $(".div_cada_amigo").length; i++){
+            setTimeout(function(){
+              $(".div_cada_amigo").last().remove();
+            }, 800);
+          }s
         }
       });
     });
