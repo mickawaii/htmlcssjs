@@ -154,7 +154,7 @@ button
   text-align: center;
 }
 
-.calcula
+.botaoCalcula
 { 
   width: 40px;
   height: 84px;
@@ -166,7 +166,7 @@ button
   height: 40px;
 }
 
-.limpa
+.botaoLimpa
 {
   width: 172px;
   height: 40px;
@@ -197,11 +197,12 @@ button
   border: 1px solid gray;
 }
 
-#div2
+#divMaroto
 {
   width: 100px;
   height: 100px;
   background: lightblue;
   text-align: center;
+  position: relative;
 }
 

@@ -1,102 +1,133 @@
-
-// $(document).ready(function(){
-//   $("#botaoApagar").click(function(){
-//     $("#apagar").toggle("");
-//     return false;
-//   });
-
-//   $(".but").click(function() {
-//     console.log($(this).val());
-//     $("displayNumero").val($(this).val());
-//   });
-// });
-
-
+var limpaDisplay = false;
 var operacaoArmazenadaParaContasPosteriores = '';
 var valorArmazenadoParaContasPosteriores = 0;
-var resultadoArmazenado = 0;
 var displayElementNumero = null;
 var displayElementOperacao = null;
-var limpaDisplay = false;
 
-window.onload = function() {
-  displayElementNumero = document.getElementById("displayNumero");
-  displayElementOperacao = document.getElementById("displayOperacao");
-}
+$(document).ready(function(){
+  displayElementNumero = $("#displayNumero");
+  displayElementOperacao = $("displayOperacao");
+  $("#divMaroto").css({
+    top: "0px",
+    left: "0px"
+  });
 
+  $("#botaoApagar").click(function(){
+    $("#apagar").toggle("");
+    return false;
+  });
+
+  $(".botaoInsereNumero").click(function(){
+    var valorDoBotao = $(this).html();
+
+    if(limpaDisplay == true) {
+      displayElementNumero.val(valorDoBotao);
+      limpaDisplay = false;
+    } else {
+      if(displayElementNumero.val() == '0' && valorDoBotao == '0') {
+        displayElementNumero.val(valorDoBotao); 
+      } else if(displayElementNumero.val() == '0') {
+        displayElementNumero.val(valorDoBotao);
+      } else {
+        displayElementNumero.val(displayElementNumero.val()+valorDoBotao);
+      }
+    }
+  });
+
+  $(".botaoInsereOperacao").click(function(){
+    var operacaoMatematica = $(this).html();
+    if(valorArmazenadoParaContasPosteriores == 0) {
+      valorArmazenadoParaContasPosteriores = parseFloat(displayElementNumero.val());
+      operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
+      displayElementOperacao.val(operacaoMatematica);
+    } else {
+      fazAConta();
+      operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
+      displayElementNumero.val(valorArmazenadoParaContasPosteriores);
+      displayElementOperacao.val(operacaoMatematica);
+    }
+    limpaDisplay = true;
+  });
+
+  $(".botaoCalcula").click(function(){
+    fazAConta();
+    displayElementNumero.val(valorArmazenadoParaContasPosteriores);
+    displayElementOperacao.val('');
+    limpaDisplay = true;
+    operacaoArmazenadaParaContasPosteriores = '';
+    valorArmazenadoParaContasPosteriores = 0;
+  });
+
+  $(".botaoLimpa").click(function(){
+    operacaoArmazenadaParaContasPosteriores = '';
+    valorArmazenadoParaContasPosteriores = 0;
+    displayElementNumero.val('0');
+    displayElementOperacao.val('');
+  });
+
+  $("#divMaroto").mouseOver(function(){
+    if ($(this).css("left") == '0' && $(this).css("top") == '0') {
+      $(this).animate({
+        top: "0px";
+        left: "150px";
+      }, 1000 );
+    }
+    else if ($(this).css("left") == '150px' && $(this).css("top") == '0px'){
+      $(this).css("top", "+=150px");
+    }
+    else if ($(this).css("left") == '150px' && $(this).css("top") == '150px'){
+      $(this).css("left", "-=150px");
+    }
+    else if ($(this).css("top") == '150px' && $(this).css("left") == '0px'){
+      $(this).css("top", "-=150px");
+    }
+});
+  
 function fazAConta() {
   switch (operacaoArmazenadaParaContasPosteriores) {
     case '+':
-      valorArmazenadoParaContasPosteriores += parseFloat(displayElementNumero.value);
+      valorArmazenadoParaContasPosteriores += parseFloat(displayElementNumero.val());
       break;
     case '-':
-      valorArmazenadoParaContasPosteriores -= parseFloat(displayElementNumero.value);
+      valorArmazenadoParaContasPosteriores -= parseFloat(displayElementNumero.val());
       break;
     case '*':
-      valorArmazenadoParaContasPosteriores *= parseFloat(displayElementNumero.value);
+      valorArmazenadoParaContasPosteriores *= parseFloat(displayElementNumero.val());
       break;
     case '/':
-      valorArmazenadoParaContasPosteriores /= parseFloat(displayElementNumero.value);
+      valorArmazenadoParaContasPosteriores /= parseFloat(displayElementNumero.val());
       break;
   }
 }
+  
 
-function calcula() {
-  fazAConta();
-  displayElementNumero.value = valorArmazenadoParaContasPosteriores;
-  displayElementOperacao.value = '';
-  limpaDisplay = true;
-  operacaoArmazenadaParaContasPosteriores = '';
-  valorArmazenadoParaContasPosteriores = 0;
-}
-
-function operacao(operacaoMatematica) {
-  if(valorArmazenadoParaContasPosteriores == 0) {
-    valorArmazenadoParaContasPosteriores = parseFloat(displayElementNumero.value);
-    operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
-    displayElementOperacao.value = operacaoMatematica;
-  } else {
-    fazAConta();
-    operacaoArmazenadaParaContasPosteriores = operacaoMatematica;
-    displayElementNumero.value = valorArmazenadoParaContasPosteriores;
-    displayElementOperacao.value = operacaoMatematica;
-  }
-  limpaDisplay = true;
-}
-
-function inserirValorNoDisplay(valor) {
-  if(limpaDisplay == true) {
-    displayElementNumero.value = valor;
-    limpaDisplay = false;
-  } else {
-    if(displayElementNumero.value == '0' && valor == '0') {
-      displayElementNumero.value == valor;
-    } else if(displayElementNumero.value == '0') {
-      displayElementNumero.value = valor;
-    } else {
-      displayElementNumero.value = displayElementNumero.value + valor;
+  function mouseEmcimaDoDiv(obj) {
+    if (obj.style.left == '0px' && obj.style.top == '0px') {
+      obj.style.left = '150px';
+    }
+    else if (obj.style.left == '150px' && obj.style.top == '0px'){
+      obj.style.top = '150px';
+    }
+    else if (obj.style.left == '150px' && obj.style.top == '150px'){
+      obj.style.left = '0px';
+    }
+    else if (obj.style.top == '150px' && obj.style.left == '0px'){
+      obj.style.top = '0px';
     }
   }
-}
 
-function limpaVisor() {
-  operacaoMatematica = '';
-  valorArmazenadoParaContasPosteriores = 0;
-  displayElementNumero.value = '0';
-  displayElementOperacao.value = '';
-}
+  function mouseEmcimaDoDiv(obj) {
+    if (obj.style.left == '0px' && obj.style.top == '0px') {
+      obj.style.left = '150px';
+    }
+    else if (obj.style.left == '150px' && obj.style.top == '0px'){
+      obj.style.top = '150px';
+    }
+    else if (obj.style.left == '150px' && obj.style.top == '150px'){
+      obj.style.left = '0px';
+    }
+    else if (obj.style.top == '150px' && obj.style.left == '0px'){
+      obj.style.top = '0px';
+    }
+  }
 
-function mouseEmcimaDoDiv(obj) {
-  if (obj.style.left == '0px' && obj.style.top == '0px') {
-    obj.style.left = '150px';
-  }
-  else if (obj.style.left == '150px' && obj.style.top == '0px'){
-    obj.style.top = '150px';
-  }
-  else if (obj.style.left == '150px' && obj.style.top == '150px'){
-    obj.style.left = '0px';
-  }
-  else if (obj.style.top == '150px' && obj.style.left == '0px'){
-    obj.style.top = '0px';
-  }
-}
