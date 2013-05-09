@@ -61,6 +61,9 @@
             $(".div_pessoa").last().remove();
           }, 1000);
         } else if(opcao_menu.val() == "opcao_coreano"){
+
+          loadStuff(someURL, someID, function() { showStuff('foo'); });
+        });
           setInterval(function(){
             $(".div_cada_amigo").last().remove();
           }, 1000);

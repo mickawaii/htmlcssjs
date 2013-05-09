@@ -2,7 +2,7 @@
 <head>
   <title>Pagina Teste</title>
   <link rel="stylesheet" type="text/css" href="css.css">
-  <script type="text/javascript" src="js.js"></script>
+  <!-- <script type="text/javascript" src="js.js"></script> -->
   <script src="jquery-1.9.1.js"></script>
   <script src="meujquery.js"></script>
 </head>
@@ -54,41 +54,39 @@
           </tr>
 
           <tr>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(7)">7</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(8)">8</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(9)">9</button></td>
-            <td><button class="but" type="button" onclick="operacao('+')">+</button></td>
+            <td><button class="but botaoInsereNumero" type="button">7</button></td>
+            <td><button class="but botaoInsereNumero" type="button">8</button></td>
+            <td><button class="but botaoInsereNumero" type="button">9</button></td>
+            <td><button class="but botaoInsereOperacao" type="button">+</button></td>
           </tr>
 
           <tr>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(4)">4</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(5)">5</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(6)">6</button></td>
-            <td><button class="but" type="button" onclick="operacao('-')">-</button></td>
+            <td><button class="but botaoInsereNumero" type="button">4</button></td>
+            <td><button class="but botaoInsereNumero" type="button">5</button></td>
+            <td><button class="but botaoInsereNumero" type="button">6</button></td>
+            <td><button class="but botaoInsereOperacao" type="button">-</button></td>
           </tr>
 
           <tr>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(1)">1</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(2)">2</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(3)">3</button></td>
-            <td><button class="but" type="button" onclick="operacao('*')">*</button></td>
+            <td><button class="but botaoInsereNumero" type="button">1</button></td>
+            <td><button class="but botaoInsereNumero" type="button">2</button></td>
+            <td><button class="but botaoInsereNumero" type="button">3</button></td>
+            <td><button class="but botaoInsereOperacao" type="button">*</button></td>
           </tr>
 
           <tr>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay(0)">0</button></td>
-            <td><button class="but" type="button" onclick="inserirValorNoDisplay('.')">.</button></td>
-            <td><button class="but" type="button" onclick="operacao('/')">/</button></td>
-            <td><button class="but" type="button" onclick="calcula()">=</button></td>
+            <td><button class="but botaoInsereNumero" type="button">0</button></td>
+            <td><button class="but botaoInsereNumero" type="button">.</button></td>
+            <td><button class="but botaoInsereOperacao" type="button">/</button></td>
+            <td><button class="but botaoCalcula" type="button">=</button></td>
           </tr>
 
           <tr>
-            <td colspan="4"><button class="limpa" type="button" onclick="limpaVisor()">Limpar</button></td>
+            <td colspan="4"><button class="botaoLimpa" type="button">Limpar</button></td>
           </tr>
         </table>
         <br>
-        <button id="botaoApagar">Botao apagar</button>
       </form>
-      <button id="mouseAqui">OK</button>
 
       <div class="div_maroto js_div_maroto">Passe o mouse!</div>
 
