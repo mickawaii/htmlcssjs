@@ -7,62 +7,185 @@ baixo 40 -->
 <head>
   <title>Snake</title>
   <style type="text/css">
-    .div_snake {
-      background: lightblue;
-      display: block;
-      height: 20px;
-      width: 20px;
+    body
+    {
       position: relative;
+      margin: 0;
     }
 
-    .div_snake_other {
-      background: lightblue;
-      display: block;
-      height: 20px;
-      width: 20px;
-      position: relative;
+    .clear_left
+    {
+      clear: left;
     }
 
+    .each_grid_div
+    {
+      border: 1px solid lightblue;
+      height: 18px;
+      width: 18px;
+      position: relative;
+      float: left;
+    }
+
+    .div_snake
+    {
+      background: lightblue;
+    }
+
+    .div_comida
+    {
+      background: pink;
+    }
   </style>
   <script src="jquery-1.9.1.js"></script>
   <script>
     $(document).ready(function(){
-      elem_div_snake = $(".js_div_snake");
-      elem_div_snake.css({
-        left: "500px",
-        top: "250px"
-      });
+      var direcaoAtual = 38;
+      var arraySnake = [ "#div_10_10"];
+
+      for(var i=0; i<20; i++){
+        for(var j=0; j<20; j++){
+          if(j == 0 && i != 0){
+            $("body").append("<div class='each_grid_div clear_left' id='div_"+i+"_"+j+"'></div>");  
+          } else {
+            $("body").append("<div class='each_grid_div' id='div_"+i+"_"+j+"'></div>");    
+          }
+        }
+      }
+
+      $("body").append("<p>Pontuacao:</p>");
+      $("body").append("<div class='div_pontuacao js_div_pontuacao'></div>");
+
+      $("#div_10_10").addClass("div_snake");
+      $("#div_15_15").addClass("div_comida");
+
+      function esquerda(obj) {
+        var currentId = obj.attr('id');
+        var idSplit = currentId.split('_');
+        var coordNova = parseInt(idSplit[2])-1;
+        return $("#div_"+idSplit[1]+"_"+coordNova);
+      }
+
+      function acima(obj) {
+        var currentId = obj.attr('id');
+        var idSplit = currentId.split('_');
+        var coordNova = parseInt(idSplit[1])-1;
+        return $("#div_"+coordNova+"_"+idSplit[2]);
+      }
+
+      function direita(obj) {
+        var currentId = obj.attr('id');
+        var idSplit = currentId.split('_');
+        var coordNova = parseInt(idSplit[2])+1;
+        return $("#div_"+idSplit[1]+"_"+coordNova);
+      }
+
+      function abaixo(obj) {
+        var currentId = obj.attr('id');
+        var idSplit = currentId.split('_');
+        var coordNova = parseInt(idSplit[1])+1;
+        return $("#div_"+coordNova+"_"+idSplit[2]);
+      }
+
+      function devolveCoordenadasAPartirDoObjeto(obj){
+        var currentId = obj.attr('id');
+        var idSplit = currentId.split('_');
+        return idSplit;
+      }
+
+      function colocaComida() {
+        var x = Math.floor(Math.random()*21);
+        var y = Math.floor(Math.random()*21);
+        $("#div_"+y+"_"+x).addClass("div_comida");
+      }
+
+      function comecarAndando(){
+        var velocidade = 300;
+        var cresceSnake = false;
+        var divNovo = null;
+        var divLixo = null;
+        var pontuacao = 0;
+        var andando = setInterval(function(){
+          
+
+          if(direcaoAtual == 37){
+            divNovo = esquerda($(arraySnake[arraySnake.length-1]));
+          }
+          if(direcaoAtual == 38){
+            divNovo = acima($(arraySnake[arraySnake.length-1]));
+          }
+          if(direcaoAtual == 39){
+            divNovo = direita($(arraySnake[arraySnake.length-1]));
+          }
+          if(direcaoAtual == 40){
+            divNovo = abaixo($(arraySnake[arraySnake.length-1]));
+          }
+          if(cresceSnake == true){
+
+            divNovo.addClass("div_snake");
+            arraySnake.push("#"+divNovo.attr('id'));
+            cresceSnake = false;
+
+          } else if($(divNovo).hasClass("div_comida")){
+
+            divNovo.removeClass("div_comida");
+            divNovo.addClass("div_snake");
+            arraySnake.push("#"+divNovo.attr('id'));
+            var divLixo = arraySnake.shift();
+            $(divLixo).removeClass("div_snake");
+            pontuacao += 1;
+            $(".div_pontuacao").html(pontuacao);
+            cresceSnake = true;
+            colocaComida();
+
+          } else {
+
+            divNovo.addClass("div_snake");
+            arraySnake.push("#"+divNovo.attr('id'));
+            divLixo = arraySnake.shift();
+            $(divLixo).removeClass("div_snake");
+          }
+
+        },velocidade);
+      }
 
       $(window).keydown(function(event) {
-        if (event.which == 37) {
-          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-          elem_div_snake.css({
-            left: "-=20px"
-          });
-        }
-        if (event.which == 38) {
-          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-          elem_div_snake.css({
-            top: "-=20px"
-          });
-        }
-        if (event.which == 39) {
-          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-          elem_div_snake.css({
-            left: "+=20px"
-          });
-        }
-        if (event.which == 40) {
-          elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-          elem_div_snake.css({
-            top: "+=20px"
-          });
+        if(!(Math.abs(direcaoAtual - event.which) == 2)){
+          direcaoAtual = event.which;
         }
       });
+
+      comecarAndando();
+
+      // $(window).keydown(function(event) {
+      //   if (event.which == 37) {
+      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+      //     elem_div_snake.css({
+      //       left: "-=20px"
+      //     });
+      //   }
+      //   if (event.which == 38) {
+      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+      //     elem_div_snake.css({
+      //       top: "-=20px"
+      //     });
+      //   }
+      //   if (event.which == 39) {
+      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+      //     elem_div_snake.css({
+      //       left: "+=20px"
+      //     });
+      //   }
+      //   if (event.which == 40) {
+      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
+      //     elem_div_snake.css({
+      //       top: "+=20px"
+      //     });
+      //   }
+      // });
     });
   </script>
 </head>
 <body>
-  <div class="div_snake js_div_snake"></div>
 </body>
 </html>
