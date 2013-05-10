@@ -40,8 +40,13 @@ baixo 40 -->
   <script src="jquery-1.9.1.js"></script>
   <script>
     $(document).ready(function(){
-      var direcaoAtual = 38;
       var arraySnake = [ "#div_10_10"];
+      var direcaoAtual = 38;
+      var velocidade = 300;
+      var cresceSnake = false;
+      var divNovo = null;
+      var divLixo = null;
+      var pontuacao = 0;
 
       for(var i=0; i<20; i++){
         for(var j=0; j<20; j++){
@@ -55,59 +60,47 @@ baixo 40 -->
 
       $("body").append("<p>Pontuacao:</p>");
       $("body").append("<div class='div_pontuacao js_div_pontuacao'></div>");
-
       $("#div_10_10").addClass("div_snake");
       $("#div_15_15").addClass("div_comida");
 
       function esquerda(obj) {
-        var currentId = obj.attr('id');
-        var idSplit = currentId.split('_');
+        var idSplit = devolveCoordenadasAPartirDoObjeto(obj);
         var coordNova = parseInt(idSplit[2])-1;
         return $("#div_"+idSplit[1]+"_"+coordNova);
       }
 
       function acima(obj) {
-        var currentId = obj.attr('id');
-        var idSplit = currentId.split('_');
+        var idSplit = devolveCoordenadasAPartirDoObjeto(obj);
         var coordNova = parseInt(idSplit[1])-1;
         return $("#div_"+coordNova+"_"+idSplit[2]);
       }
 
       function direita(obj) {
-        var currentId = obj.attr('id');
-        var idSplit = currentId.split('_');
+        var idSplit = devolveCoordenadasAPartirDoObjeto(obj);
         var coordNova = parseInt(idSplit[2])+1;
         return $("#div_"+idSplit[1]+"_"+coordNova);
       }
 
       function abaixo(obj) {
-        var currentId = obj.attr('id');
-        var idSplit = currentId.split('_');
+        var idSplit = devolveCoordenadasAPartirDoObjeto(obj);
         var coordNova = parseInt(idSplit[1])+1;
         return $("#div_"+coordNova+"_"+idSplit[2]);
       }
 
       function devolveCoordenadasAPartirDoObjeto(obj){
-        var currentId = obj.attr('id');
-        var idSplit = currentId.split('_');
-        return idSplit;
+        return obj.attr('id').split('_');
       }
 
       function colocaComida() {
         var x = Math.floor(Math.random()*21);
         var y = Math.floor(Math.random()*21);
+        var idSplit = devolveCoordenadasAPartirDoObjeto(obj);
+        if(("#div_"+y+"_"+x).)
         $("#div_"+y+"_"+x).addClass("div_comida");
       }
 
-      function comecarAndando(){
-        var velocidade = 300;
-        var cresceSnake = false;
-        var divNovo = null;
-        var divLixo = null;
-        var pontuacao = 0;
-        var andando = setInterval(function(){
-          
-
+      function comecarJogo(){
+        setInterval(function(){
           if(direcaoAtual == 37){
             divNovo = esquerda($(arraySnake[arraySnake.length-1]));
           }
@@ -154,35 +147,7 @@ baixo 40 -->
           direcaoAtual = event.which;
         }
       });
-
-      comecarAndando();
-
-      // $(window).keydown(function(event) {
-      //   if (event.which == 37) {
-      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-      //     elem_div_snake.css({
-      //       left: "-=20px"
-      //     });
-      //   }
-      //   if (event.which == 38) {
-      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-      //     elem_div_snake.css({
-      //       top: "-=20px"
-      //     });
-      //   }
-      //   if (event.which == 39) {
-      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-      //     elem_div_snake.css({
-      //       left: "+=20px"
-      //     });
-      //   }
-      //   if (event.which == 40) {
-      //     elem_div_snake.clone().append("<div class='div_snake_other js_div_snake_other'></div>");
-      //     elem_div_snake.css({
-      //       top: "+=20px"
-      //     });
-      //   }
-      // });
+      comecarJogo();
     });
   </script>
 </head>
